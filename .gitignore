@@ -13,7 +13,7 @@
 #
 # Debian directory (make deb-pkg)
 #
-/L01F11k/
+/kernel10c/
 
 #
 # git files that we don't want to ignore even it they are dot-files

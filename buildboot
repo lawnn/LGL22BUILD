@@ -7,7 +7,7 @@ mkdir -p ./output/system/lib/modules
 mkdir -p ./output/boot
 ./mkbootfs ./ramdisk | gzip > ramdisk.gz
 mv ramdisk.gz ./output/boot
-cd L01F11k
+cd kernel10c
 export CROSS_COMPILE=../arm-cortex_a8-linux-gnueabi-linaro_4.8.3-2014.01/bin/arm-cortex_a8-linux-gnueabi-
 export USE_CCACHE=1
 export ARCH=arm
@@ -20,7 +20,7 @@ make -j10
 ./scripts/dtc/dtc -p 1024 -O dtb -o ./arch/arm/boot/msm8974-v2-2-g2-dcm.dtb ./arch/arm/boot/dts/msm8974-g2-dcm/msm8974-v2-2-g2-dcm.dts
 ./scripts/dtbTool -s 2048 -o ./arch/arm/boot/dt.img -p ./scripts/dtc/ ./arch/arm/boot/
 cd ../
-cp ./L01F11k/scripts/mkbootimg ./output/boot
+cp ./kernel10c/scripts/mkbootimg ./output/boot
 find . -name '*.ko' -exec cp {} ./output/system/lib/modules  \;
 find . -name 'zImage' -exec cp {} ./output/boot  \;
 find . -name 'dt.img' -exec cp {} ./output/boot  \;
@@ -34,3 +34,4 @@ mv ./boot.img ../boot.img
 cd ../
 rm -rf ./boot/
 zip -r G2NinjaKernel.zip *
+rm -f ./boot.img
