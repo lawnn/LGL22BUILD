@@ -5,8 +5,8 @@ rm -rf ./output/boot
 rm -rf ./output/system/lib/modules
 mkdir -p ./output/system/lib/modules
 mkdir -p ./output/boot
-./mkbootfs ./ramdisk | gzip > ramdisk.gz
-mv ramdisk.gz ./output/boot
+#./mkbootfs ./ramdisk | gzip > ramdisk.gz
+cp ramdisk.cpio.lz4 ./output/boot
 cd kernel10c
 export CROSS_COMPILE=../arm-cortex_a8-linux-gnueabi-linaro_4.8.3-2014.01/bin/arm-cortex_a8-linux-gnueabi-
 export USE_CCACHE=1
@@ -29,7 +29,7 @@ base=0x00000000
 offset=0x05000000
 tags_addr=0x04800000
 cmd_line="console=ttyHSL0,115200,n8 androidboot.hardware=g2 user_debug=31 msm_rtb.filter=0x0"
-./mkbootimg --kernel ./zImage --ramdisk ./ramdisk.gz --cmdline "$cmd_line" --base $base --offset $offset --tags-addr $tags_addr --pagesize 2048 --dt ./dt.img -o boot.img
+./mkbootimg --kernel ./zImage --ramdisk ./ramdisk.cpio.lz4 --cmdline "$cmd_line" --base $base --offset $offset --tags-addr $tags_addr --pagesize 2048 --dt ./dt.img -o boot.img
 mv ./boot.img ../boot.img
 cd ../
 rm -rf ./boot/
