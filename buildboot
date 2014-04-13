@@ -8,7 +8,7 @@ mkdir -p ./output/boot
 #./mkbootfs ./ramdisk | gzip > ramdisk.gz
 cp ramdisk.cpio.lz4 ./output/boot
 cd kernel10c
-export CROSS_COMPILE=../arm-cortex_a15-linux-gnueabihf-linaro_4.8.3-2014.01/bin/arm-cortex_a15-linux-gnueabihf-
+export CROSS_COMPILE=../arm-cortex_a15-linux-gnueabihf-linaro_4.8.3-2014.03/bin/arm-cortex_a15-linux-gnueabihf-
 export USE_CCACHE=1
 export ARCH=arm
 rm -f ./arch/arm/boot/dt.img
