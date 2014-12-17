@@ -33,5 +33,5 @@ cmd_line="console=ttyHSL0,115200,n8 androidboot.hardware=g2 user_debug=31 msm_rt
 mv ./boot.img ../boot.img
 cd ../
 rm -rf ./boot/
-zip -r G2NinjaKernel.zip *
+zip -r L01F-STOCK--KERNEL-JB-"$(date +"[20%y-%m%d].zip * >/dev/null
 rm -f ./boot.img
