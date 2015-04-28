@@ -8,7 +8,7 @@ mkdir -p ./output/boot
 #./mkbootfs ./ramdisk | gzip > ramdisk.gz
 cp ramdisk.cpio.lz4 ./output/boot
 cd kernel10c
-export CROSS_COMPILE=../arm-cortex_a15-linux-gnueabihf-linaro_4.8.3-2014.03/bin/arm-cortex_a15-linux-gnueabihf-
+export CROSS_COMPILE=../linaro-4.9-cortex-a15/bin/arm-cortex_a15-linux-gnueabihf-
 export USE_CCACHE=1
 export ARCH=arm
 rm -f ./arch/arm/boot/dt.img
@@ -28,7 +28,7 @@ cd ./output/boot
 base=0x00000000
 offset=0x05000000
 tags_addr=0x04800000
-cmd_line="console=ttyHSL0,115200,n8 androidboot.hardware=g2 user_debug=31 msm_rtb.filter=0x0"
+cmd_line="console=ttyHSL0,115200,n8 androidboot.hardware=g2 user_debug=31 msm_rtb.filter=0x0 mdss_mdp.panel=1:dsi:0:qcom,mdss_dsi_g2_lgd_cmd androidboot.selinux=permissive"
 ./mkbootimg --kernel ./zImage --ramdisk ./ramdisk.cpio.lz4 --cmdline "$cmd_line" --base $base --offset $offset --tags-addr $tags_addr --pagesize 2048 --dt ./dt.img -o boot.img
 mv ./boot.img ../boot.img
 cd ../
