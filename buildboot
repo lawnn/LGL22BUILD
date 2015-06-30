@@ -33,6 +33,6 @@ cmd_line="console=ttyHSL0,115200,n8 androidboot.hardware=g2 user_debug=31 msm_rt
 mv ./boot.img ../boot.img
 cd ../
 rm -rf ./boot/
-zip -r L01F-STOCK-KERNEL-JB-"$(date +"[20%y-%m%d]")".zip *
+zip -r KK-L01F-KERNEL-"$(date +"[20%y-%m%d]")".zip *
 rm -f ./boot.img
 cd ../
